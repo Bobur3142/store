@@ -26,9 +26,9 @@
             :key="item.name"
             :to="item.path"
             class="flex flex-col items-center justify-center flex-1 h-full transition-colors"
-            :class="activeTabs(item.path) ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'"
+            :class="activeTabs(item.name) ? 'text-blue-700 dark:text-gray-50' : 'text-gray-600 dark:text-gray-400'"
           >
-            <span class="text-md">{{ t(`nav.${item.name}`) }}</span>
+            <span class="text-md font-medium">{{ t(`nav.${item.name}`) }}</span>
           </router-link>
         </nav>
 

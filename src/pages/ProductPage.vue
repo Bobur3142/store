@@ -64,29 +64,44 @@
           </div>
 
           <div class="flex items-center gap-4">
-            <div class="flex items-center gap-3 bg-gray-100 dark:bg-gray-900 rounded-lg px-4 py-3">
-              <button
-                @click="quantity = Math.max(1, quantity - 1)"
-                class="text-xl font-bold text-gray-700 dark:text-gray-300"
-              >
-                -
-              </button>
-              <span class="text-lg font-semibold w-8 text-center">{{ quantity }}</span>
-              <button
-                @click="quantity++"
-                class="text-xl font-bold text-gray-700 dark:text-gray-300"
-              >
-                +
-              </button>
-            </div>
-
-            <button
+            <q-btn
+              v-if="productQuantity === 0"
               @click="handleAddToCart"
-              class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+              no-caps
+              unelevated
+              class="w-full !bg-blue-600 hover:!bg-blue-700 !text-white !py-2 !px-4 rounded-lg transition-colors duration-200"
             >
-              <span>🛒</span>
-              <span>{{ t('product.addToCart') }}</span>
-            </button>
+              <div class="flex items-center justify-center gap-2 w-full">
+                <q-icon name="shopping_cart" size="18px" />
+                <span class="text-sm font-medium">{{ t('product.addToCart') }}</span>
+              </div>
+            </q-btn>
+
+            <div v-else class="w-full h-[36px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between px-2">
+              <q-btn
+                flat
+                dense
+                no-caps
+                @click="decreaseQuantity"
+                class="w-[28px] h-[22px] q-pa-none rounded-md !text-gray-700 dark:!text-white"
+              >
+                <q-icon name="remove" size="18px" />
+              </q-btn>
+
+              <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                {{ productQuantity }}
+              </span>
+
+              <q-btn
+                flat
+                dense
+                no-caps
+                @click="increaseQuantity"
+                class="w-[28px] h-[22px] q-pa-none rounded-md !text-gray-700 dark:!text-white"
+              >
+                <q-icon name="add" size="18px" />
+              </q-btn>
+            </div>
           </div>
 
           <div class="border-t border-gray-200 dark:border-gray-800 pt-6">
@@ -163,8 +178,8 @@ import {useI18n} from "vue-i18n";
 
 const route = useRoute()
 const { t, locale } = useI18n()
-const { addToCart } = useCart()
 const { toggleFavorite, isFavorite } = useFavorites()
+const { addToCart, updateQuantity, getProductQuantity } = useCart()
 
 const quantity = ref(1)
 console.log(route.params.id)
@@ -201,6 +216,18 @@ const similarProducts = computed(() => {
     .filter(p => p.category === product.value?.category && p.id !== product.value?.id)
     .slice(0, 5)
 })
+
+const productQuantity = computed(() => {
+  return getProductQuantity(product.value.id)
+})
+
+const increaseQuantity = () => {
+  addToCart(product.value)
+}
+
+const decreaseQuantity = () => {
+  updateQuantity(product.value.id, productQuantity.value - 1)
+}
 
 const handleAddToCart = () => {
   if (product.value) {

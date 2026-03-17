@@ -6,9 +6,9 @@
           <div
             v-for="item in cartItems"
             :key="item.id"
-            class="dark:bg-gray-900 p-4 rounded-xl flex gap-4"
+            class="dark:bg-gray-900 p-4 rounded-xl flex items-center gap-4"
           >
-            <router-link :to="`/product/${item.slug}`" class="w-24 h-24 flex-shrink-0">
+            <router-link :to="`/product/${item.slug}`" class="w-28 h-28 flex-shrink-0">
               <img
                 :src="item.image"
                 :alt="item.title"
@@ -16,40 +16,55 @@
               />
             </router-link>
 
-            <div class="flex-1">
-              <router-link :to="`/product/${item.slug}`">
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400">
-                  {{ item.title }}
-                </h3>
-              </router-link>
+            <div class="flex-1 flex column no-wrap gap-4">
+              <div class="flex justify-between items-center">
+                <router-link :to="`/product/${item.slug}`">
+                  <span class="text-[16px] font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
+                    {{ item.title }}
+                  </span>
+                </router-link>
+
+                <p class="text-lg font-bold text-gray-900 dark:text-white">
+                  ${{ item.price * item.quantity }}
+                </p>
+              </div>
 
               <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-lg px-3 py-1">
-                  <button
+                <div class="min-w-[120px] h-[36px] bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-between px-2">
+                  <q-btn
+                    flat
+                    dense
+                    no-caps
                     @click="updateQuantity(item.id, item.quantity - 1)"
-                    class="text-lg font-bold text-gray-700 dark:text-gray-300"
+                    class="w-[28px] h-[22px] q-pa-none rounded-md !text-gray-700 dark:!text-white"
                   >
-                    -
-                  </button>
-                  <span class="font-semibold w-6 text-center">{{ item.quantity }}</span>
-                  <button
+                    <q-icon name="remove" size="18px" />
+                  </q-btn>
+
+                  <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                    {{ item.quantity }}
+                  </span>
+
+                  <q-btn
+                    flat
+                    dense
+                    no-caps
                     @click="updateQuantity(item.id, item.quantity + 1)"
-                    class="text-lg font-bold text-gray-700 dark:text-gray-300"
+                    class="w-[28px] h-[22px] q-pa-none rounded-md !text-gray-700 dark:!text-white"
                   >
-                    +
-                  </button>
+                    <q-icon name="add" size="18px" />
+                  </q-btn>
                 </div>
 
                 <div class="text-right">
-                  <p class="text-lg font-bold text-gray-900 dark:text-white">
-                    ${{ item.price * item.quantity }}
-                  </p>
-                  <button
+                  <q-btn
+                    flat
+                    dense
                     @click="removeFromCart(item.id)"
-                    class="text-sm text-red-600 dark:text-red-400 hover:underline"
+                    class="w-8 h-8 rounded-md !min-w-0 bg-red-500 text-white"
                   >
-                    {{ t('basket.remove') }}
-                  </button>
+                    <q-icon name="delete_outline" size="18px" />
+                  </q-btn>
                 </div>
               </div>
             </div>

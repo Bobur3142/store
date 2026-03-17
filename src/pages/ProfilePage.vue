@@ -19,25 +19,11 @@
       <div class="space-y-4">
         <router-link
           to="/catalog"
-          class="bg-gray-100 dark:bg-gray-900 rounded-2xl p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+          class="bg-gray-100 dark:bg-gray-900 rounded-2xl p-4 flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800"
         >
           <div class="flex items-center gap-3">
             <span class="text-2xl">📦</span>
             <span class="font-medium">{{ t('profile.myOrders') }}</span>
-          </div>
-          <span class="text-gray-400">→</span>
-        </router-link>
-
-        <router-link
-          to="/catalog"
-          class="bg-gray-100 dark:bg-gray-900 rounded-2xl p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-        >
-          <div class="flex items-center gap-3">
-            <span class="text-2xl">❤️</span>
-            <div>
-              <div class="font-medium">{{ t('profile.favorites') }}</div>
-              <div class="text-sm text-gray-500">{{ favoriteIds.length }} items</div>
-            </div>
           </div>
           <span class="text-gray-400">→</span>
         </router-link>
@@ -56,7 +42,7 @@
 
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <q-icon class="text-primary-500 dark:text-yellow-500" :name="isDark ? 'wb_sunny' : 'nights_stay'" size="20px" />
+                <q-icon class="text-primary-500 dark:text-yellow-500" :name="isDark ? 'wb_sunny' : 'bedtime'" size="20px" />
                 <span class="font-medium">{{ t('profile.theme') }}</span>
               </div>
               <button
@@ -76,10 +62,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useTheme } from '../composables/useTheme'
-import { useFavorites } from '../composables/useFavorites'
 import LanguageSwitcher from '../components/LanguageSwitcher.vue'
 
 const { t } = useI18n()
 const { isDark, toggleTheme } = useTheme()
-const { favoriteIds } = useFavorites()
 </script>

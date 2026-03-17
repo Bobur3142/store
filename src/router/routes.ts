@@ -12,7 +12,6 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: MainLayout,
     children: [
-      // { path: 'path', name: 'name', component: component name },
       { path: '', name: 'home', component: HomePage },
       { path: '/catalog', name: 'catalog', component: CatalogPage },
       { path: '/product/:id', name: 'product', component: ProductPage },
