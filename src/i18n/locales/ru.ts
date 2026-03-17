@@ -64,8 +64,24 @@ export const ru = ref({
     darkMode: "Темная тема",
     logout: "Выйти",
     name: "Иван Иванов",
-    email: "ivan.ivanov@example.com",
-    phone: "+7 900 123 45 67"
+    ordersBadge: "История покупок",
+    ordersSubtitle: "Здесь отображаются все оформленные заказы и их текущий статус",
+    ordersCount: "Заказов",
+    ordersEmptyTitle: "У вас пока нет заказов",
+    ordersEmptyMessage: "После оформления заказа он автоматически появится в этом разделе",
+    productsLabel: "тов.",
+    deliveryInfo: "Получатель и доставка",
+    subtotal: "Сумма товаров",
+    paymentMethods: {
+      card: "Оплата картой",
+      cash: "Оплата наличными"
+    },
+    orderStatuses: {
+      new: "Новый",
+      processing: "В обработке",
+      delivering: "В пути",
+      completed: "Завершён"
+    }
   },
   common: {
     price: "Цена",
@@ -102,6 +118,7 @@ export const ru = ref({
     deliveryFee: "Доставка",
     free: "Бесплатно",
     confirmOrder: "Подтвердить заказ",
-    backToBasket: "Вернуться в корзину"
+    backToBasket: "Вернуться в корзину",
+    orderCreated: "Заказ успешно оформлен"
   }
 })

@@ -64,8 +64,24 @@ export const uz = ref({
     darkMode: "Qorong'u rejim",
     logout: "Chiqish",
     name: "Alisher Aliyev",
-    email: "alisher.aliyev@example.com",
-    phone: "+998 90 123 45 67"
+    ordersBadge: "Xaridlar tarixi",
+    ordersSubtitle: "Bu yerda barcha rasmiylashtirilgan buyurtmalar va ularning holati ko‘rinadi",
+    ordersCount: "Buyurtmalar",
+    ordersEmptyTitle: "Sizda hali buyurtmalar yo‘q",
+    ordersEmptyMessage: "Buyurtma rasmiylashtirilgandan keyin u avtomatik shu yerda paydo bo‘ladi",
+    productsLabel: "ta mahsulot",
+    deliveryInfo: "Qabul qiluvchi va yetkazib berish",
+    subtotal: "Mahsulotlar summasi",
+    paymentMethods: {
+      card: "Karta orqali to‘lov",
+      cash: "Naqd to‘lov"
+    },
+    orderStatuses: {
+      new: "Yangi",
+      processing: "Jarayonda",
+      delivering: "Yo‘lda",
+      completed: "Yakunlangan"
+    }
   },
   common: {
     price: "Narx",
@@ -102,6 +118,7 @@ export const uz = ref({
     deliveryFee: "Yetkazib berish",
     free: "Bepul",
     confirmOrder: "Buyurtmani tasdiqlash",
-    backToBasket: "Savatga qaytish"
+    backToBasket: "Savatga qaytish",
+    orderCreated: "Buyurtma muvaffaqiyatli rasmiylashtirildi"
   }
 })

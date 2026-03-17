@@ -12,6 +12,8 @@ export interface CartItem {
 const cartItems = ref<CartItem[]>([])
 
 const loadCart = () => {
+  if (typeof localStorage === 'undefined') return
+
   const saved = localStorage.getItem('cart')
   if (saved) {
     cartItems.value = JSON.parse(saved)
@@ -19,6 +21,7 @@ const loadCart = () => {
 }
 
 const saveCart = () => {
+  if (typeof localStorage === 'undefined') return
   localStorage.setItem('cart', JSON.stringify(cartItems.value))
 }
 

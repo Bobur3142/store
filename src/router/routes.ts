@@ -6,6 +6,7 @@ import ProductPage from "pages/ProductPage.vue";
 import BasketPage from "pages/BasketPage.vue";
 import ProfilePage from "pages/ProfilePage.vue";
 import CheckoutPage from "pages/CheckoutPage.vue";
+import OrdersPage from "pages/OrdersPage.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -18,6 +19,7 @@ const routes: RouteRecordRaw[] = [
       { path: '/basket', name: 'basket', component: BasketPage },
       { path: '/profile', name: 'profile', component: ProfilePage },
       { path: '/checkout', name: 'checkout', component: CheckoutPage },
+      { path: '/profile/orders', name: 'orders', component: OrdersPage, meta: { titleKey: 'profile.myOrders' } },
     ],
   },
 /*  {

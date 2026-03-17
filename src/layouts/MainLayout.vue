@@ -16,7 +16,7 @@
           </q-btn>
 
           <span class="text-xl font-bold text-gray-900 dark:text-white">
-            {{ t(`nav.${currentTab}`) }}
+            {{ currentTitle }}
           </span>
         </div>
 
@@ -102,6 +102,14 @@ const showBackButton = computed(() => {
 const currentTab = computed(() => {
   const item = navItems.find(i => activeTabs(i.name))
   return item ? item.name : 'home'
+})
+
+const currentTitle = computed(() => {
+  if (route.meta?.titleKey) {
+    return t(String(route.meta.titleKey))
+  }
+
+  return t(`nav.${currentTab.value}`)
 })
 
 function activeTabs(name: string){

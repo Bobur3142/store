@@ -159,6 +159,7 @@
 
             <button
               type="button"
+              @click="submitOrder"
               class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-semibold transition-colors"
             >
               {{ t('checkout.confirmOrder') }}
@@ -179,12 +180,18 @@
 
 <script setup lang="ts">
 import { computed, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
 import EmptyState from '../components/EmptyState.vue'
 import { useCart } from '../composables/useCart'
+import { useOrders } from '../composables/useOrders'
 
+const $q = useQuasar()
+const router = useRouter()
 const { t } = useI18n()
-const { cartItems, cartCount, cartTotal } = useCart()
+const { cartItems, cartCount, cartTotal, clearCart } = useCart()
+const { createOrder } = useOrders()
 
 const form = reactive({
   fullName: '',
@@ -199,9 +206,38 @@ const form = reactive({
 const deliveryPrice = computed(() => (cartTotal.value >= 100 ? 0 : 5))
 const grandTotal = computed(() => cartTotal.value + deliveryPrice.value)
 const deliveryPriceLabel = computed(() => deliveryPrice.value === 0 ? t('checkout.free') : `$${deliveryPrice.value}`)
+
+
+const submitOrder = () => {
+  const order = createOrder({
+    form: {
+      fullName: form.fullName || t('profile.name'),
+      phone: form.phone || t('profile.phone'),
+      email: form.email,
+      city: form.city || t('checkout.cityPlaceholder'),
+      address: form.address || t('checkout.addressPlaceholder'),
+      comment: form.comment,
+      paymentMethod: form.paymentMethod as 'card' | 'cash'
+    },
+    items: cartItems.value,
+    subtotal: cartTotal.value,
+    deliveryPrice: deliveryPrice.value,
+    total: grandTotal.value
+  })
+
+  clearCart()
+
+  $q.notify({
+    type: 'positive',
+    message: `${t('checkout.orderCreated')}`,
+    position: 'top'
+  })
+
+  router.push('/profile/orders')
+}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .input-field {
   @apply w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-3 text-gray-900 dark:text-white outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10;
 }

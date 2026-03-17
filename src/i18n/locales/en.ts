@@ -64,8 +64,24 @@ export const en = ref({
     darkMode: "Dark Mode",
     logout: "Logout",
     name: "John Doe",
-    email: "john.doe@example.com",
-    phone: "+1 234 567 8900"
+    ordersBadge: "Purchase history",
+    ordersSubtitle: "All placed orders and their current status are shown here",
+    ordersCount: "Orders",
+    ordersEmptyTitle: "You have no orders yet",
+    ordersEmptyMessage: "After checkout, your order will appear here automatically",
+    productsLabel: "items",
+    deliveryInfo: "Customer & delivery",
+    subtotal: "Items subtotal",
+    paymentMethods: {
+      card: "Card payment",
+      cash: "Cash payment"
+    },
+    orderStatuses: {
+      new: "New",
+      processing: "Processing",
+      delivering: "On the way",
+      completed: "Completed"
+    }
   },
   common: {
     price: "Price",
@@ -102,6 +118,7 @@ export const en = ref({
     deliveryFee: "Delivery",
     free: "Free",
     confirmOrder: "Place order",
-    backToBasket: "Back to basket"
+    backToBasket: "Back to basket",
+    orderCreated: "Order placed successfully"
   }
 })

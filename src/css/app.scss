@@ -29,8 +29,8 @@
   }
 }
 
-.min-h-screen{
-  min-height: calc(100vh - 69px);
+.page-h{
+  height: calc(100vh - 69px) !important;
 }
 
 .custom-select {
