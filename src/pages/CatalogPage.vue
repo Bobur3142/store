@@ -41,7 +41,7 @@
                 outlined
                 type="number"
                 placeholder="Min"
-                class="custom-input"
+                class="custom-input input-sm"
               />
 
               <q-input
@@ -49,7 +49,7 @@
                 outlined
                 type="number"
                 placeholder="Max"
-                class="custom-input"
+                class="custom-input input-sm"
               />
             </div>
           </div>
@@ -167,7 +167,7 @@
                 outlined
                 type="number"
                 placeholder="Min"
-                class="custom-input"
+                class="custom-input input-sm"
               />
 
               <q-input
@@ -175,7 +175,7 @@
                 outlined
                 type="number"
                 placeholder="Max"
-                class="custom-input"
+                class="custom-input input-sm"
               />
             </div>
           </div>

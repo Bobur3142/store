@@ -140,12 +140,42 @@
   }
 }
 
-
-.custom-input {
+@mixin q-input-size($height) {
   .q-field__inner {
     .q-field__control {
-      min-height: 36px;
-      height: 36px;
+      min-height: $height;
+      height: $height;
+
+      .q-field__control-container {
+        height: $height;
+      }
+
+      .q-field__native,
+      .q-field__input,
+      .q-field__marginal {
+        min-height: $height;
+        height: $height;
+      }
+    }
+  }
+}
+
+
+.custom-input {
+  &.input-lg {
+    @include q-input-size(46px);
+  }
+
+  &.input-md {
+    @include q-input-size(42px);
+  }
+
+  &.input-sm {
+    @include q-input-size(36px);
+  }
+
+  .q-field__inner {
+    .q-field__control {
       background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
       border-radius: 8px;
 
@@ -158,12 +188,8 @@
       }
 
       .q-field__control-container {
-        height: 36px;
-
         .q-field__native,
         .q-field__input {
-          min-height: 36px;
-          height: 36px;
           color: #000;
         }
       }
@@ -172,10 +198,6 @@
       .q-field__prepend {
         min-height: 36px;
         color: #000;
-      }
-
-      .q-field__marginal {
-        height: 36px;
       }
     }
   }
