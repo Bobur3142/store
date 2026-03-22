@@ -1,5 +1,5 @@
 <template>
-  <div class="dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group">
+  <div class="dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm hover:shadow-lg group">
     <router-link :to="`/product/${product.id}`" class="block">
       <div class="relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800">
         <img

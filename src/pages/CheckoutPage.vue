@@ -35,17 +35,35 @@
             <div class="grid sm:grid-cols-2 gap-4">
               <label class="space-y-2">
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('checkout.fullName') }}</span>
-                <input v-model="form.fullName" type="text" class="input-field" :placeholder="t('checkout.fullNamePlaceholder')" />
+                <q-input
+                  v-model="form.fullName"
+                  outlined
+                  type="text"
+                  :placeholder="t('checkout.fullNamePlaceholder')"
+                  class="custom-input order-input input-lg"
+                />
               </label>
 
               <label class="space-y-2">
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('checkout.phone') }}</span>
-                <input v-model="form.phone" type="tel" class="input-field" placeholder="+998 90 123 45 67" />
+                <q-input
+                  v-model="form.phone"
+                  outlined
+                  type="tel"
+                  placeholder="+998 90 123 45 67"
+                  class="custom-input order-input input-lg"
+                />
               </label>
 
               <label class="space-y-2 sm:col-span-2">
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('checkout.email') }}</span>
-                <input v-model="form.email" type="email" class="input-field" placeholder="example@mail.com" />
+                <q-input
+                  v-model="form.email"
+                  outlined
+                  type="email"
+                  placeholder="example@mail.com"
+                  class="custom-input order-input input-lg"
+                />
               </label>
             </div>
           </section>
@@ -58,21 +76,35 @@
             <div class="grid sm:grid-cols-2 gap-4 mb-4">
               <label class="space-y-2">
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('checkout.city') }}</span>
-                <input v-model="form.city" type="text" class="input-field" :placeholder="t('checkout.cityPlaceholder')" />
+                <q-input
+                  v-model="form.city"
+                  outlined
+                  type="text"
+                  :placeholder="t('checkout.cityPlaceholder')"
+                  class="custom-input order-input input-lg"
+                />
               </label>
 
               <label class="space-y-2">
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('checkout.address') }}</span>
-                <input v-model="form.address" type="text" class="input-field" :placeholder="t('checkout.addressPlaceholder')" />
+                <q-input
+                  v-model="form.address"
+                  outlined
+                  type="text"
+                  :placeholder="t('checkout.addressPlaceholder')"
+                  class="custom-input order-input input-lg"
+                />
               </label>
             </div>
 
             <label class="space-y-2 block">
               <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('checkout.comment') }}</span>
-              <textarea
+              <q-input
                 v-model="form.comment"
-                rows="4"
-                class="input-field resize-none"
+                outlined
+                type="textarea"
+                :rows="4"
+                class="custom-input order-input"
                 :placeholder="t('checkout.commentPlaceholder')"
               />
             </label>
